@@ -28,7 +28,9 @@ namespace NServiceBus.HostBuilder
                                 })
                                 .ConfigureServices(services =>
                                 {
-                                    services.AddHostedService<NServiceBusHostedService>();
+                                    services.AddHostedService<NServiceBusHostedService>()
+                                        .AddHostedService<TimerHostedService>()
+                                        .AddSingleton<IProvideEndpointInstance, EndpointInstanceProvider>();
                                 });
 
             if (Debugger.IsAttached || args.Contains("--console"))
