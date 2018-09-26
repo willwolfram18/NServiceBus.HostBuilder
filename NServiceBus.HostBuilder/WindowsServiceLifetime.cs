@@ -56,7 +56,7 @@ namespace NServiceBus.HostBuilder
 
                 _taskForLifetime.TrySetException(new InvalidOperationException("Windows Services stopped without starting."));
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 _taskForLifetime.TrySetException(e);
             }
